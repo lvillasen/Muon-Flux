@@ -79,10 +79,10 @@ def enviar_datos( ):
 
     try:
         # Crear la conexión HTTPS
-        conn = http.client.HTTPSConnection("ciiec.buap.mx", context=ssl_context)
+        conn = http.client.HTTPSConnection("XXXXXXXX", context=ssl_context)
 
         # Enviar la solicitud POST
-        conn.request("POST", "/Muon-Flux/save_data.php", params, headers)
+        conn.request("POST", "XXXXXXXXXXXXXXXXXX", params, headers)
 
         # Obtener la respuesta
         response = conn.getresponse()
