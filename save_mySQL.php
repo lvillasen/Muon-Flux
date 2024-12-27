@@ -21,9 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $P = $_POST['P'];
     $T = $_POST['T'];
     $H = $_POST['H'];
+    $date_time_rec = date("Y-m-d H:i:s");
 
-    // Preparar la consulta SQL
-    $sql = "INSERT INTO data (date_time, r1, r2, p, t, h) VALUES ('$date_time', '$r1', '$r2', '$p', '$t', '$h')";
+    // Consulta SQL para insertar los datos
+    $sql = "INSERT INTO data (date_time, r1, r2, p, t, h, date_time_rec) 
+        VALUES ('$date_time', '$r1', '$r2', '$p', '$t', '$h', '$date_time_rec')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
