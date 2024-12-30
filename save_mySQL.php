@@ -1,8 +1,8 @@
 <?php
 // Conexión a la base de datos MySQL
 $servername = "localhost";  // o la IP del servidor de MySQL si está en otro lugar
-$username = "lvillasen";
-$password = "Brunito0";
+$username = "XXXXXXXX";
+$password = "XXXXXXX";
 $dbname = "muon_flux";
 
 // Crear la conexión
