@@ -58,8 +58,8 @@ def enviar_datos( ):
     headers = { "Content-type": "application/x-www-form-urlencoded" }
 
     try:
-        conn = http.client.HTTPSConnection("ciiec.buap.mx", context=ssl_context)
-        conn.request("POST", "/Muon-Flux/save_mySQL.php", params, headers)
+        conn = http.client.HTTPSConnection("XXXX.XXXX.XX", context=ssl_context)
+        conn.request("POST", "/XXXXXXX/save_mySQL.php", params, headers)
         response = conn.getresponse()
         if response.status == 200:
             print(formatted_time,deltaS,deltaD,P,T,H)
