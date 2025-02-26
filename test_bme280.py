@@ -1,5 +1,5 @@
 # pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org RPI.BME280
-
+# i2cdetect -y -r 0
 import smbus2
 import bme280
 
