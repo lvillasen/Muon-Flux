@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import ssl
+# Last updated 26/Feb/25
 import http.client
 import urllib.parse
 import ssl
@@ -10,6 +10,7 @@ from periphery import MMIO
 import time
 import json
 import os
+import csv
 def enviar_datos( ):
     global Rates
     result = os.popen("bash /root/Muon-Flux/Temperature.sh").read().strip()
@@ -53,13 +54,35 @@ def enviar_datos( ):
         'H': H,
         'temperature': temperature
     }
+    fieldnames = ['date_time', 'deltaR1','deltaR2','R1', 'R2', 'P', 'T', 'H', 'temperature']
 
+    data_raw = {
+        'date_time': formatted_time,
+        'deltaR1': deltaS,
+        'deltaR2': deltaD,
+        'R1': NUM_SINGLES,
+        'R2': NUM_DOUBLES,
+        'P': P,
+        'T': T,
+        'H': H,
+        'temperature': temperature
+    }
+
+    file_name = "/root/Muon-Flux/Data.csv"
+
+    with open(file_name, mode='a', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        
+        if file.tell() == 0:
+            writer.writeheader()
+        
+        writer.writerow(data_raw)
     params = urllib.parse.urlencode(data)
     headers = { "Content-type": "application/x-www-form-urlencoded" }
 
     try:
-        conn = http.client.HTTPSConnection("XXXX.XXXX.XX", context=ssl_context)
-        conn.request("POST", "/XXXXXXX/save_mySQL.php", params, headers)
+        conn = http.client.HTTPSConnection("XXX.XXX.8.192", context=ssl_context)
+        conn.request("POST", "/Muon-Flux/save_mySQL.php", params, headers)
         response = conn.getresponse()
         if response.status == 200:
             print(formatted_time,deltaS,deltaD,P,T,H)
