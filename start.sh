@@ -8,7 +8,7 @@
 # ...Enter 
 # crontab -l
 # ...Check this line shows up
-# */5 * * * * /usr/bin/python3 /root/Muon-Flux/muonFluxCrontab.py > /var/log/cron.log 2>&1
+# */5 * * * * /usr/bin/python3 /root/Muon-Flux/muonFluxCrontab.py > /var/log/cronMF.log 2>&1
 # ...If it does not insert it with 
 # crontab -e
 # ...To see the log file enter
